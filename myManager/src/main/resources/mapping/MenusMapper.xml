@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.manag.myManager.mapper.MenuMapper">
+    <select id="findAllMenu" resultType="cn.manag.myManager.Menu">
+        select * from menus limit #{first} , #{second}
+    </select>
+    <select id="findMenuById"  resultType="cn.manag.myManager.Menu">
+        select * from menus where menu_id=#{id}
+    </select>
+    <insert id="insertMenu" parameterType="cn.manag.myManager.Menu" useGeneratedKeys="true" keyProperty="menu_id">
+        insert into menus (menu_name,menu_address,menu_rename,menu_phone,user_id) value (#{menu_name},#{menu_address},#{menu_rename},#{menu_phone},#{user_id})
+    </insert>
+    <select id="findMenuByUserId"  resultType="cn.manag.myManager.Menu">
+        select * from menus where user_id=#{id}
+    </select>
+    <delete id="deleteMenuById" parameterType="cn.manag.myManager.Menu">
+        delete from menus where menu_id = #{menu_id}
+    </delete>
+</mapper>
